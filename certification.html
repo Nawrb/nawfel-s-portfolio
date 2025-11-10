@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Certifications - Nawfel Rharbaoui</title>
+<style>
+  /* COPIEZ-COLLEZ TOUT LE STYLE DE VOTRE 'index.html' ICI */
+  /* Reset & base */
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #121619;
+    color: #e0e6e9;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a {
+    color: #00aaff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #0088cc;
+    text-decoration: underline;
+  }
+
+  /* ... (TOUT LE RESTE DE VOTRE CSS) ... */
+
+  /* Header */
+  header {
+    background-color: #1c2128;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .typing {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #00aaff;
+    /* ... (le reste du style .typing) ... */
+  }
+  .nav-buttons {
+    display: flex;
+    gap: 25px;
+  }
+  .dropdown {
+    position: relative;
+    user-select: none;
+  }
+  .dropdown-button {
+    background: transparent;
+    padding: 8px 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: #d0d7de;
+    border: none;
+    box-shadow: none;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+  }
+  .dropdown-button:hover, .dropdown-button:focus {
+    color: #00aaff;
+    text-shadow: 0 0 6px #00aaff;
+    outline: none;
+  }
+  
+  /* ... (Collez tout votre CSS ici) ... */
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 28px;
+  }
+  .card {
+    background-color: #222a36;
+    padding: 28px 24px;
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(0,170,255,0.45);
+  }
+  .card h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: #00ccff;
+    font-weight: 700;
+  }
+  .card p {
+    color: #cfd8dc;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+  main {
+    max-width: 1100px;
+    margin: 40px auto 80px;
+    padding: 0 25px;
+  }
+  section {
+    margin-bottom: 70px;
+  }
+  h1, h2 {
+    color: #00aaff;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  h1 { font-size: 2.6rem; }
+  h2 { font-size: 2.1rem; }
+  p {
+    color: #b0bec5;
+    font-size: 1.1rem;
+    max-width: 720px;
+  }
+  footer {
+    background-color: #1c2128;
+    padding: 24px 20px;
+    text-align: center;
+    color: #7a8a99;
+    font-size: 14px;
+    border-top: 1px solid #2c333a;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="typing" aria-label="Nom et prénom : Rharbaoui Nawfel">Rharbaoui Nawfel</div>
+
+  <nav class="nav-buttons" role="navigation" aria-label="Menu principal">
+    <a href="index.html" class="dropdown-button" style="text-shadow: none;">Accueil</a>
+    <a href="a-propos.html" class="dropdown-button" style="text-shadow: none;">À Propos</a>
+
+    <div class="dropdown" id="contactDropdown" tabindex="0">
+      <button class="dropdown-button" aria-haspopup="true" aria-expanded="false" aria-controls="contactDropdownMenu">Contact</button>
+      <div class="dropdown-content" id="contactDropdownMenu" role="menu" aria-label="Options de contact">
+        <div role="menuitem"><a href="mailto:nawfelrharbaoui.pro@gmail.com" tabindex="-1">📧 nawfelrharbaoui.pro@gmail.com</a></div>
+        <div role="menuitem"><a href="tel:+33762088491" tabindex="-1">📞 07 62 08 84 91</a></div>
+      </div>
+    </div>
+
+    <div class="dropdown" id="certificationDropdown" tabindex="0">
+      <button class="dropdown-button" aria-haspopup="true" aria-expanded="false" aria-controls="certificationDropdownMenu">Certification</button>
+      <div class="dropdown-content" id="certificationDropdownMenu" role="menu" aria-label="Options de certifications">
+        <div role="menuitem" tabindex="0">Première année</div>
+        <div role="menuitem" tabindex="0" onclick="window.open('https://docs.google.com/document/d/1VEPa4X1tod6Mn-VaKJ9zPafGxoqLPaHG4NB4AJhMOGM/edit?tab=t.0', '_blank')">Deuxième année</div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h1>Mes Certifications et Formations</h1>
+    <p>
+      Je consacre du temps à l'apprentissage continu et à la validation de mes compétences à travers des plateformes reconnues.
+    </p>
+  </section>
+
+  <section>
+    <h2>Formations en cours</h2>
+    <div class="grid">
+      <article class="card" tabindex="0" aria-label="Certification Unity">
+        <h3>Certification Unity</h3>
+        <p>Je développe activement mes compétences sur le moteur de jeu Unity, en me formant à la création d'expériences interactives 3D et 2D, ainsi qu'à la programmation C#.</p>
+      </article>
+      <article class="card" tabindex="0" aria-label="Certification TryHackMe">
+        <h3>Certification TryHackMe</h3>
+        <p>Je renforce mes connaissances en cybersécurité via la plateforme TryHackMe. Je complète des "rooms" (ateliers pratiques) couvrant le pentesting, la sécurité réseau et l'analyse de vulnérabilités.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Objectifs Futurs</h2>
+    <p style="font-size: 1.2rem; font-style: italic;">
+      Actuellement, je prépare également une certification dédiée à l'intelligence artificielle afin de maîtriser les concepts du machine learning et de l'analyse de données.
+    </p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Nawfel Rharbaoui — BTS SIO | <a href="mailto:nawfelrharbaoui.pro@gmail.com">Me contacter</a>
+</footer>
+
+<script>
+  // COPIEZ-COLLEZ TOUT LE SCRIPT DE VOTRE 'index.html' ICI
+  // (Celui qui gère les clics sur les dropdowns)
+</script>
+
+</body>
+</html>
