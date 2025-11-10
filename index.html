@@ -290,46 +290,33 @@
 </footer>
 
 <script>
-  // Gestion des dropdowns
+  // Gestion du dropdown "Contact"
   const contactDropdownBtn = document.querySelector('#contactDropdown .dropdown-button');
   const contactDropdownContent = document.querySelector('#contactDropdown .dropdown-content');
-  const certificationDropdownBtn = document.querySelector('#certificationDropdown .dropdown-button');
-  const certificationDropdownContent = document.querySelector('#certificationDropdown .dropdown-content');
 
+  // Ouvre et ferme le dropdown "Contact" au clic
   contactDropdownBtn.addEventListener('click', e => {
-    e.stopPropagation();
+    e.stopPropagation(); // Empêche le clic de fermer le menu immédiatement
     const show = contactDropdownContent.classList.toggle('show');
-    certificationDropdownContent.classList.remove('show');
     contactDropdownBtn.setAttribute('aria-expanded', show);
-    certificationDropdownBtn.setAttribute('aria-expanded', false);
   });
 
-  certificationDropdownBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    const show = certificationDropdownContent.classList.toggle('show');
-    contactDropdownContent.classList.remove('show');
-    certificationDropdownBtn.setAttribute('aria-expanded', show);
-    contactDropdownBtn.setAttribute('aria-expanded', false);
-  });
-
+  // Ferme le dropdown si on clique n'importe où sur la page
   document.addEventListener('click', () => {
     contactDropdownContent.classList.remove('show');
-    certificationDropdownContent.classList.remove('show');
     contactDropdownBtn.setAttribute('aria-expanded', false);
-    certificationDropdownBtn.setAttribute('aria-expanded', false);
   });
 
+  // Ferme le dropdown avec la touche "Echap"
   document.addEventListener('keydown', e => {
     if (e.key === "Escape") {
       contactDropdownContent.classList.remove('show');
-      certificationDropdownContent.classList.remove('show');
       contactDropdownBtn.setAttribute('aria-expanded', false);
-      certificationDropdownBtn.setAttribute('aria-expanded', false);
     }
   });
 </script>
-
 </body>
 </html>
+
 
 
