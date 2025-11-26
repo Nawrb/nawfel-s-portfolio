@@ -5,265 +5,265 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Certification TryHackMe - Nawfel Rharbaoui</title>
 <style>
-  /* --- BASE & RESET --- */
+  /* --- RESET & BASE --- */
   *, *::before, *::after { box-sizing: border-box; }
+  
+  :root {
+    /* Palette Dark Minimalist */
+    --bg-color: #050505;
+    --card-bg: #0a0a0a;
+    --text-main: #ededed;
+    --text-muted: #888888;
+    --border-color: #222222;
+    --accent-orange: #ff5500;
+  }
+
   body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121619;
-    color: #e0e6e9;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
+
+  ::selection {
+    background: var(--accent-orange);
+    color: #fff;
+  }
+
+  /* --- LIENS --- */
   a {
-    color: #00aaff;
+    color: var(--text-main);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
   }
   a:hover, a:focus {
-    color: #0088cc;
-    text-decoration: underline;
+    color: var(--accent-orange);
   }
 
   /* --- HEADER --- */
   header {
-    background-color: #1c2128;
+    background: rgba(5, 5, 5, 0.8);
     padding: 20px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    backdrop-filter: blur(10px);
   }
+
   .typing {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #00aaff;
-    margin: 0;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid var(--accent-orange);
+    width: 18ch;
+    animation: typing 3.5s steps(18) forwards, blink 1s step-end infinite;
   }
+  @keyframes typing { from { width: 0; } to { width: 18ch; } }
+  @keyframes blink { 50% { border-color: transparent; } }
+
+  /* --- NAVIGATION --- */
   .nav-buttons {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     align-items: center;
   }
-  /* Simulation des liens de navigation */
-  .nav-link {
-    color: #d0d7de;
-    font-weight: 600;
-    font-size: 1rem;
+  
+  .nav-link-btn {
+    background: transparent;
+    border: none;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
   }
-  .nav-link:hover {
-    color: #00aaff;
-    text-shadow: 0 0 6px rgba(0, 170, 255, 0.4);
-    text-decoration: none;
-  }
-  .nav-link.active {
-    color: #00aaff;
-    border-bottom: 2px solid #00aaff;
+  
+  .nav-link-btn:hover, .nav-link-btn:focus, .nav-link-btn.active {
+    color: var(--accent-orange);
+    outline: none;
   }
 
-  /* --- MAIN CONTENT LAYOUT --- */
+  /* DROPDOWN MENU */
+  .dropdown { position: relative; }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 150%;
+    right: 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    min-width: 200px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    z-index: 110;
+    padding: 5px;
+  }
+  .dropdown-content.show {
+    display: block;
+    animation: fadeIn 0.2s ease forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-radius: 2px;
+  }
+  .dropdown-content a:hover {
+    background-color: #1a1a1a;
+    color: var(--accent-orange);
+  }
+
+  /* --- MAIN CONTENT --- */
   main {
-    max-width: 1100px;
-    margin: 40px auto 80px;
+    max-width: 900px;
+    margin: 80px auto 120px;
     padding: 0 25px;
   }
-  section {
-    margin-bottom: 70px;
-  }
-  h1, h2, h3 {
-    color: #00aaff;
-    font-weight: 700;
-  }
-  h1 { font-size: 2.6rem; margin-bottom: 10px; }
-  h2 { font-size: 2.1rem; margin-bottom: 25px; border-left: 5px solid #00aaff; padding-left: 15px; }
-  p {
-    color: #b0bec5;
-    font-size: 1.1rem;
-    max-width: 800px;
-    margin-bottom: 20px;
-  }
-
-  /* --- CERTIFICATION SHOWCASE (HERO) --- */
-  .cert-hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 60px;
-  }
-  .cert-hero h1 {
-    text-shadow: 0 0 15px rgba(0, 170, 255, 0.2);
-  }
-  .cert-display {
-    margin-top: 30px;
-    position: relative;
-    max-width: 100%;
-    width: 800px; /* Largeur idéale pour le certificat */
-  }
-  /* Le cadre de l'image du certificat */
-  .cert-frame {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 1px solid #2c333a;
-    box-shadow: 0 0 30px rgba(0, 170, 255, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Placeholder background si pas d'image */
-    background: #1c2128;
-    min-height: 500px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #555;
-    flex-direction: column;
-  }
-  .cert-frame:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 50px rgba(0, 170, 255, 0.3);
-  }
-  .cert-frame img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-  }
-  .cert-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-  .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: transparent;
-    border: 2px solid #00aaff;
-    color: #00aaff;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-  }
-  .btn:hover {
-    background-color: #00aaff;
-    color: #121619;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
-    text-decoration: none;
-  }
-
-  /* --- STATS & BADGES --- */
-  .stats-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    background: #1c2128;
-    padding: 30px;
-    border-radius: 14px;
-    margin-bottom: 50px;
-    border: 1px solid #2c333a;
-  }
-  .stat-item {
-    text-align: center;
-    padding: 15px;
-  }
-  .stat-value {
-    display: block;
-    font-size: 2.5rem;
+  section { margin-bottom: 100px; }
+  
+  h1 {
+    font-size: 3rem;
     font-weight: 800;
-    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--text-main);
   }
-  .stat-label {
-    color: #00aaff;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
   }
 
-  /* --- GRID SYSTEM (Copied & Adapted) --- */
+  p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+
+  /* --- GRID SYSTEM --- */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 28px;
-  }
-  .card {
-    background-color: #222a36;
-    padding: 28px 24px;
-    border-radius: 14px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 3px solid transparent;
-  }
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 36px rgba(0,170,255,0.25);
-    border-top: 3px solid #00aaff;
-  }
-  .card h3 {
-    margin-top: 0;
-    margin-bottom: 14px;
-    color: #fff; /* White title for better contrast inside card */
-  }
-  .card h3 span {
-    color: #00aaff; /* Accent color inside title */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
 
-  /* --- BADGES LIST --- */
-  .badges-grid {
+  /* --- CARDS & INFO BTN --- */
+  .card {
+    position: relative; /* Pour positionner le bouton info */
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: default;
+    height: 100%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: flex-start;
+    flex-direction: column;
   }
-  .badge-placeholder {
-    width: 100px;
-    height: 100px;
-    background-color: #1c2128;
-    border-radius: 50%; /* Cercle */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #2c333a;
-    transition: border-color 0.3s;
-    overflow: hidden;
+
+  .card:hover {
+    border-color: var(--accent-orange);
+    background-color: rgba(255, 85, 0, 0.02);
+    transform: translateY(-2px);
   }
-  .badge-placeholder:hover {
-    border-color: #00aaff;
+
+  .card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s;
+    padding-right: 30px; /* Évite que le texte passe sous le bouton info */
   }
-  .badge-placeholder img {
-    width: 80%;
-    height: auto;
+  
+  .card:hover h3 {
+    color: var(--accent-orange);
   }
-  .badge-caption {
-    font-size: 0.8rem;
+
+  .card p {
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  /* Style spécifique bouton info "i" */
+  .info-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    line-height: 22px; /* Centrage vertical */
     text-align: center;
-    margin-top: 5px;
-    color: #7a8a99;
+    border: 1px solid var(--accent-orange);
+    border-radius: 50%;
+    color: var(--accent-orange);
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+
+  .info-btn:hover {
+    background-color: var(--accent-orange);
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
   }
 
   /* --- FOOTER --- */
   footer {
-    background-color: #1c2128;
-    padding: 24px 20px;
+    border-top: 1px solid var(--border-color);
+    padding: 40px 0;
     text-align: center;
-    color: #7a8a99;
-    font-size: 14px;
-    border-top: 1px solid #2c333a;
+    color: #444;
+    font-size: 0.85rem;
     margin-top: auto;
   }
-  
-  /* Responsive Adjustments */
+  footer a { color: #666; }
+  footer a:hover { color: var(--accent-orange); }
+
   @media (max-width: 768px) {
-    header { padding: 15px 20px; flex-direction: column; gap: 15px; }
-    h1 { font-size: 2rem; }
-    .cert-display { width: 100%; }
-    .cert-frame { min-height: 300px; }
+    h1 { font-size: 2.5rem; }
+    main { margin-top: 40px; }
+    .nav-buttons { gap: 20px; }
   }
 </style>
 </head>
