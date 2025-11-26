@@ -130,6 +130,44 @@
     font-size: 14px;
     border-top: 1px solid #2c333a;
   }
+
+  /* --- AJOUTS POUR LE BOUTON INFO --- */
+
+/* Important : permet de placer le bouton par rapport à la carte */
+.card {
+  position: relative; 
+  /* Gardez vos autres styles .card existants ici... */
+}
+
+.info-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  line-height: 22px; /* Ajustement pour centrer le texte verticalement avec la bordure */
+  text-align: center;
+  border: 2px solid #00aaff;
+  border-radius: 50%;
+  color: #00aaff;
+  font-family: 'Times New Roman', serif; /* Un 'i' avec empattement est plus lisible */
+  font-style: italic;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.info-btn:hover {
+  background-color: #00aaff;
+  color: #121619; /* Texte sombre sur fond bleu */
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.6);
+  text-decoration: none;
+  transform: scale(1.1); /* Petit effet de grossissement */
+}
+  
 </style>
 </head>
 <body>
@@ -167,20 +205,23 @@
     <h2>Formations en première année</h2>
     <div class="grid">
       <article class="card" tabindex="0" aria-label="Certification Unity">
-        <h3>Certification Unity</h3>
-        <p>Je développe activement mes compétences sur le moteur de jeu Unity, en me formant à la création d'expériences interactives 3D et 2D, ainsi qu'à la programmation C#.</p>
-      </article>      
+    <a href="goToCertifUnity.html" class="info-btn" aria-label="Détails Unity" title="Voir la certification Unity">i</a>
+    
+    <h3>Certification Unity</h3>
+    <p>Je développe activement mes compétences sur le moteur de jeu Unity, en me formant à la création d'expériences interactives 3D et 2D, ainsi qu'à la programmation C#.</p>
+</article>
     </div>
   </section>
 
   <section>
     <h2>Formations en deuxième année</h2>
     <div class="grid">
-      <article class="card" id="tryhackme-card" tabindex="0" aria-label="Certification Unity">
-          <h3>Certification TryHackMe</h3>
-        <p>Je renforce mes connaissances en cybersécurité via la plateforme TryHackMe. Je complète des "rooms" (ateliers pratiques) couvrant le pentesting, la sécurité réseau et l'analyse de vulnérabilités.</p>
-        </div>
-      </article>
+      <article class="card" id="tryhackme-card" tabindex="0" aria-label="Certification TryHackMe">
+    <a href="goToCertifTryHackMe.html" class="info-btn" aria-label="Détails TryHackMe" title="Voir la certification TryHackMe">i</a>
+
+    <h3>Certification TryHackMe</h3>
+    <p>Je renforce mes connaissances en cybersécurité via la plateforme TryHackMe. Je complète des "rooms" (ateliers pratiques) couvrant le pentesting, la sécurité réseau et l'analyse de vulnérabilités.</p>
+</article>
     </div>
   </section>
 
