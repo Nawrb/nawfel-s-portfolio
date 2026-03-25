@@ -1,1 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Certification Unity - Nawfel Rharbaoui</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* --- RESET & BASE --- */
+  *, *::before, *::after { box-sizing: border-box; }
+  
+  :root {
+    /* Palette Dark Minimalist */
+    --bg-color: #050505;
+    --card-bg: #0a0a0a;
+    --text-main: #ededed;
+    --text-muted: #888888;
+    --border-color: #222222;
+    --accent-orange: #ff5500;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent-orange);
+    color: #fff;
+  }
+
+  a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  a:hover, a:focus {
+    color: var(--accent-orange);
+  }
+
+  /* --- HEADER --- */
+  header {
+    background: rgba(5, 5, 5, 0.8);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+  }
+  
+  .typing {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid var(--accent-orange);
+    width: 18ch;
+    animation: typing 3.5s steps(18) forwards, blink 1s step-end infinite;
+  }
+  @keyframes typing { from { width: 0; } to { width: 18ch; } }
+  @keyframes blink { 50% { border-color: transparent; } }
+
+  .nav-buttons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .nav-link {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--accent-orange);
+    text-decoration: none;
+  }
+
+  /* --- MAIN LAYOUT --- */
+  main {
+    max-width: 900px;
+    margin: 60px auto 100px;
+    padding: 0 25px;
+  }
+  section {
+    margin-bottom: 100px;
+  }
+  
+  h1, h2, h3 {
+    color: var(--text-main);
+  }
+  
+  h1 { 
+    font-size: 3rem; 
+    font-weight: 800; 
+    margin-bottom: 20px; 
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+  }
+  
+  h2 { 
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    margin-bottom: 30px; 
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: none;
+    padding-left: 0;
+  }
+  h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-bottom: 30px;
+  }
+
+  /* --- CERTIFICATION HERO --- */
+  .cert-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  
+  .cert-display {
+    margin-top: 40px;
+    position: relative;
+    max-width: 100%;
+    width: 800px;
+  }
+  
+  .cert-frame {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    box-shadow: none; 
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    background: var(--card-bg);
+    min-height: 400px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    flex-direction: column;
+  }
+  .cert-frame:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-orange);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  
+  .cert-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: transparent;
+    border: 1px solid var(--accent-orange);
+    color: var(--accent-orange);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background-color: var(--accent-orange);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 85, 0, 0.2);
+  }
+  .btn-outline {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+  }
+  .btn-outline:hover {
+    border-color: var(--text-main);
+    color: var(--text-main);
+    background-color: rgba(255,255,255,0.05);
+    box-shadow: none;
+  }
+
+  /* --- STATS & BADGES --- */
+  .stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: transparent;
+    padding: 30px;
+    border-radius: 6px;
+    margin-bottom: 50px;
+    border: 1px solid var(--border-color);
+  }
+  .stat-item {
+    text-align: center;
+    padding: 15px;
+  }
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+  }
+  .stat-label {
+    color: var(--accent-orange);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* --- GRID SYSTEM --- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background-color: transparent;
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+    transition: all 0.3s ease;
+    cursor: default;
+    border-top: 1px solid var(--border-color);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-orange);
+    background-color: rgba(255, 85, 0, 0.02);
+  }
+  .card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    font-size: 1.1rem;
+  }
+  .card h3 span {
+    color: var(--accent-orange);
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* --- BADGES LIST --- */
+  .badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .badge-placeholder {
+    width: 90px;
+    height: 90px;
+    background-color: var(--card-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  .badge-placeholder:hover {
+    border-color: var(--accent-orange);
+    transform: scale(1.05);
+  }
+  .badge-text {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: color 0.3s;
+  }
+  .badge-placeholder:hover .badge-text {
+    color: var(--accent-orange);
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    border-top: 1px solid var(--border-color);
+    padding: 40px 0;
+    text-align: center;
+    color: #444;
+    font-size: 0.85rem;
+    margin-top: auto;
+    background: transparent;
+  }
+  
+  @media (max-width: 768px) {
+    header { padding: 15px 20px; gap: 15px; }
+    h1 { font-size: 2.2rem; }
+    .cert-display { width: 100%; }
+    .cert-frame { min-height: 300px; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="typing">Nawfel Rharbaoui</div>
+    <nav class="nav-buttons">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="projects.html" class="nav-link">Projets</a>
+      <a href="certification.html" class="nav-link active">Certifications</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="cert-hero">
+      <h1>Certification <span style="color:var(--accent-orange)">Unity Developer</span></h1>
+      <p>
+        Unity est le moteur de jeu en temps réel le plus utilisé au monde. 
+        Cette certification valide ma maîtrise de l'éditeur, du scripting C#, et du pipeline de développement complet, de la conception au déploiement.
+      </p>
+
+      <div class="cert-display">
+        <div class="cert-frame">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <p style="margin-top:15px; font-size:0.9rem;">
+              <img src="images/certifUnity.jpg" style="max-width: 100%;">
+          </p>
+        </div>
+        
+        <div class="cert-actions">
+          <a href="https://unity.com/learn" target="_blank" class="btn">Voir le badge officiel</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="stats-container">
+        <div class="stat-item">
+          <span class="stat-value">C#</span>
+          <span class="stat-label">Expertise Code</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">2D / 3D</span>
+          <span class="stat-label">Polyvalence</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Compétences Validées</h2>
+      <p>Maîtrise technique approfondie du moteur Unity et de son écosystème.</p>
+      
+      <div class="grid">
+        <div class="card">
+          <h3><span>01.</span> Scripting C#</h3>
+          <p>Programmation orientée objet, design patterns (Singleton, Observer), gestion de la mémoire et optimisation des scripts (Garbage Collection).</p>
+        </div>
+
+        <div class="card">
+          <h3><span>02.</span> Game Physics</h3>
+          <p>Manipulation des Rigidbodies, Colliders, Raycasting. Gestion des interactions physiques complexes en 2D et 3D.</p>
+        </div>
+
+        <div class="card">
+          <h3><span>03.</span> UI & Animation</h3>
+          <p>Création d'interfaces dynamiques avec Unity UI / Toolkit. Maîtrise de l'Animator Controller, Blend Trees et Cinémachine.</p>
+        </div>
+
+        <div class="card">
+          <h3><span>04.</span> Optimization & Build</h3>
+          <p>Utilisation du Profiler pour le débogage. Baking de la lumière, Occlusion Culling et gestion des assets pour le déploiement multiplateforme.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Outils & Environnement</h2>
+      <p>L'écosystème technique utilisé conjointement avec Unity.</p>
+      
+      <div class="badges-grid">
+        <div title="Badge Unity">
+          <div class="badge-placeholder">
+             <span class="badge-text">UNITY</span>
+          </div>
+        </div>
+
+        <div title="Badge C#">
+          <div class="badge-placeholder">
+             <span class="badge-text">C#</span>
+          </div>
+        </div>
+        
+        <div title="Badge Visual Studio">
+          <div class="badge-placeholder">
+             <span class="badge-text">VS</span>
+          </div>
+        </div>
+
+        <div title="Badge Git">
+          <div class="badge-placeholder">
+             <span class="badge-text">GIT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Nawfel Rharbaoui. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
 
