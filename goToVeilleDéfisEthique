@@ -345,7 +345,7 @@
   <main>
 
     <section class="cert-hero">
-      <h1>Certification <span style="color:var(--accent-orange)">Unity Developer</span></h1>
+      <h1>Les nouveaux défis éthiques lié à l'IA <span style="color:var(--accent-orange)"></span></h1>
       <p>
         Unity est le moteur de jeu en temps réel le plus utilisé au monde. 
         Cette certification valide ma maîtrise de l'éditeur, du scripting C#, et du pipeline de développement complet, de la conception au déploiement.
@@ -447,4 +447,3 @@
 
 </body>
 </html>
-
