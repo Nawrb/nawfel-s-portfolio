@@ -274,6 +274,38 @@
       transform: rotate(180deg);
     }
 
+    /* --- STYLE ARTICLES VEILLE --- */
+    .veille-article {
+      background: var(--card-bg);
+      padding: 15px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    .veille-article:hover {
+      border-color: var(--accent-orange);
+      transform: translateX(5px);
+    }
+    .veille-article a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+    .veille-article a:hover {
+      color: var(--accent-orange);
+    }
+    .veille-article p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-left: 28px;
+    }
+
     /* --- RESPONSIVE MOBILE --- */
     @media (max-width: 900px) {
       body { flex-direction: column; }
@@ -310,6 +342,7 @@
       <a href="#accueil" class="nav-link active"><i class="fas fa-home"></i> Accueil</a>
       <a href="#apropos" class="nav-link"><i class="fas fa-user"></i> À Propos</a>
       <a href="#parcours" class="nav-link"><i class="fas fa-file-alt"></i> Parcours</a>
+      <a href="#projets" class="nav-link"><i class="fas fa-laptop-code"></i> Projets</a>
       <a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i> Certifications</a>
       <a href="#tableauSynthese" class="nav-link"><i class="fas fa-table"></i> Synthèse E5</a>
       <a href="#veilles" class="nav-link"><i class="fas fa-eye"></i> Veilles</a>
@@ -380,6 +413,39 @@
       </div>
     </section>
 
+    <section id="projets">
+      <h2 class="section-title">Mes Projets</h2>
+      <p style="margin-bottom: 30px; color: var(--text-muted);">Voici les principales réalisations développées lors de mes stages, en cours, ou en freelance.</p>
+      
+      <div class="grid">
+        <div class="card" style="text-align: left;">
+          <div style="background-color: #222; height: 150px; border-radius: 5px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+            <i class="fab fa-unity" style="font-size: 3rem; color: var(--accent-orange);"></i>
+          </div>
+          <h3 style="margin-top: 0; margin-bottom: 5px;">Révolution Idle</h3>
+          <p style="font-size: 0.85rem; color: var(--accent-orange); font-weight: 600; margin-top: 0;">Freelance / Mission</p>
+          <p style="font-size: 0.9rem;">Développement de fonctionnalités et optimisation pour un jeu vidéo de type Idle.</p>
+          <div style="margin-bottom: 15px; font-size: 0.8rem;">
+            <span style="background: #111; padding: 4px 8px; border-radius: 4px; margin-right: 5px; border: 1px solid #333;">Unity</span>
+            <span style="background: #111; padding: 4px 8px; border-radius: 4px; margin-right: 5px; border: 1px solid #333;">C#</span>
+          </div>
+        </div>
+
+        <div class="card" style="text-align: left;">
+          <div style="background-color: #222; height: 150px; border-radius: 5px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+            <i class="fab fa-php" style="font-size: 3rem; color: var(--accent-orange);"></i>
+          </div>
+          <h3 style="margin-top: 0; margin-bottom: 5px;">Outil Labo Fac Nantes</h3>
+          <p style="font-size: 0.85rem; color: var(--accent-orange); font-weight: 600; margin-top: 0;">Stage 2ème année</p>
+          <p style="font-size: 0.9rem;">Développement d'une application interne et gestion WordPress pour le laboratoire de mathématiques.</p>
+          <div style="margin-bottom: 15px; font-size: 0.8rem;">
+            <span style="background: #111; padding: 4px 8px; border-radius: 4px; margin-right: 5px; border: 1px solid #333;">Python</span>
+            <span style="background: #111; padding: 4px 8px; border-radius: 4px; margin-right: 5px; border: 1px solid #333;">PHP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="certifications">
       <h2 class="section-title">Certifications</h2>
       <div class="grid">
@@ -437,6 +503,41 @@
           <h3>C#</h3>
           <p>Optimisation et nouvelles syntaxes</p>
         </div>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 25px;">Quelques exemples d'articles de ma veille :</h3>
+        <ul style="list-style: none; padding: 0;">
+          
+          <li class="veille-article">
+            <a href="https://investors.unity.com/news/news-details/2026/Unity-and-Meta-Extend-MultiYear-Partnership-to-Power-NextGeneration-VR-Experiences/default.aspx" target="_blank">
+              <i class="fas fa-link" style="color: var(--accent-orange); margin-right: 10px;"></i> Unity and Meta Extend Multi-Year Partnership to Power Next-Generation VR
+            </a>
+            <p>Développement de l'écosystème Unity avec Meta pour les expériences VR de nouvelle génération.</p>
+          </li>
+
+          <li class="veille-article">
+            <a href="https://unity.com/fr/products/pricing-updates" target="_blank">
+              <i class="fas fa-link" style="color: var(--accent-orange); margin-right: 10px;"></i> Unity : Mise à jour de la tarification
+            </a>
+            <p>Analyse de l'évolution du modèle économique d'Unity, un sujet majeur pour les développeurs indépendants et studios.</p>
+          </li>
+
+          <li class="veille-article">
+            <a href="https://www.lemagit.fr/actualites/366641719/Nutanix-Database-Service-cauchemar-snapshots-MongoDB-shardees" target="_blank">
+              <i class="fas fa-link" style="color: var(--accent-orange); margin-right: 10px;"></i> Nutanix Database Service et le "cauchemar" des snapshots MongoDB
+            </a>
+            <p>Gestion des bases de données : problématiques de sauvegarde et d'optimisation sur des architectures distribuées (NoSQL).</p>
+          </li>
+
+          <li class="veille-article">
+            <a href="https://www.autodesk.com/fr/support/technical/article/caas/sfdcarticles/sfdcarticles/FRA/After-a-crash-an-AutoCAD-Plant-3D-Vault-project-cannot-be-opened-anymore.html" target="_blank">
+              <i class="fas fa-link" style="color: var(--accent-orange); margin-right: 10px;"></i> Autodesk : Résolution de corruption de projet après un crash (Vault)
+            </a>
+            <p>Exemple de veille sur les résolutions de bugs critiques, les pannes de logiciels d'infrastructure et la gestion d'incidents.</p>
+          </li>
+
+        </ul>
       </div>
     </section>
     
