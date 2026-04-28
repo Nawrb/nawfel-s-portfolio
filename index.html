@@ -272,6 +272,75 @@
     .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; }
     .hero h1 { font-size: 2.5rem; }
   }
+
+  /* --- DROPDOWN TABLEAU DE SYNTHÈSE --- */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Effet au survol du bouton principal */
+  .dropdown:hover .dropbtn, .dropbtn:hover {
+    border-color: var(--accent-orange);
+    background-color: #141414;
+    transform: translateY(-2px);
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card-bg);
+    min-width: 100%;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    z-index: 10;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+
+  .dropdown-content a {
+    color: var(--text-muted);
+    padding: 14px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .dropdown-content a:hover {
+    background-color: rgba(255, 85, 0, 0.1);
+    color: var(--accent-orange);
+  }
+
+  /* Affichage du menu déroulant au survol */
+  .dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Petite animation d'apparition douce */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
 <body>
@@ -419,9 +488,25 @@
       
     </section>
 <section id="tableauSynthese">
-  <h2 class="section-title"> Mon tableau de synthèse</h2>
-  
-</section>
+      <h2 class="section-title">Mon tableau de synthèse</h2>
+      <p style="margin-bottom: 30px; color: var(--text-muted);">Consultez ou téléchargez mon tableau de synthèse de l'épreuve E5 (Annexe 8-1).</p>
+      
+      <div class="dropdown">
+        <button class="dropbtn">
+          <i class="fas fa-file-pdf" style="color: #ff5500; margin-right: 10px;"></i> 
+          Tableau de synthèse E5
+          <i class="fas fa-chevron-down" style="margin-left: 15px; font-size: 0.8em;"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="images/BTS SIO - 2025 - Annexe 8-1 - Epreuve E5 -Tableau de synthèse Nawfel Rharbaoui.pdf" target="_blank">
+            <i class="fas fa-eye" style="margin-right: 10px;"></i> Voir le PDF
+          </a>
+          <a href="images/BTS SIO - 2025 - Annexe 8-1 - Epreuve E5 -Tableau de synthèse Nawfel Rharbaoui.pdf" download>
+            <i class="fas fa-download" style="margin-right: 10px;"></i> Télécharger
+          </a>
+        </div>
+      </div>
+    </section>
     <section id="veilles">
   <h2 class="section-title">Veilles Technologiques</h2>
   <p style="margin-bottom:30px;">Mes différentes alertes de veille technologique</p>
