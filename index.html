@@ -1,347 +1,297 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portfolio - Nawfel Rharbaoui</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Nawfel Rharbaoui</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-  /* --- RESET & VARIABLES --- */
-  *, *::before, *::after { box-sizing: border-box; }
+  <style>
+    /* --- RESET & VARIABLES --- */
+    *, *::before, *::after { box-sizing: border-box; }
 
-  :root {
-    --bg-color: #050505;        /* Fond principal */
-    --sidebar-bg: #0a0a0a;      /* Fond Sidebar */
-    --card-bg: #0f0f0f;         /* Fond des cartes */
-    --text-main: #ededed;       
-    --text-muted: #888888;      
-    --border-color: #222222;    
-    --accent-orange: #ff5500;   /* Votre Orange */
-    --sidebar-width: 280px;
-  }
+    :root {
+      --bg-color: #050505;        /* Fond principal */
+      --sidebar-bg: #0a0a0a;      /* Fond Sidebar */
+      --card-bg: #0f0f0f;          /* Fond des cartes */
+      --text-main: #ededed;        
+      --text-muted: #888888;      
+      --border-color: #222222;    
+      --accent-orange: #ff5500;   /* Votre Orange */
+      --sidebar-width: 280px;
+    }
 
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    line-height: 1.6;
-    display: flex;
-    min-height: 100vh;
-  }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
 
-  /* --- SIDEBAR (Gauche) --- */
-  .sidebar {
-    width: var(--sidebar-width);
-    background-color: var(--sidebar-bg);
-    border-right: 1px solid var(--border-color);
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-    z-index: 1000;
-  }
-
-  /* Profil dans la sidebar */
-  .profile-section {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: #222;
-    margin: 0 auto 15px;
-    border: 3px solid var(--accent-orange);
-    /* Remplacez l'URL ci-dessous par votre photo */
-    background-image: url(''); 
-    background-size: cover;
-    background-position: center;
-  }
-
-  .profile-name {
-    font-size: 1.4rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0;
-  }
-  
-  /* Icônes Réseaux Sociaux (Ronds oranges) */
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  .social-btn {
-    width: 35px;
-    height: 35px;
-    background-color: var(--accent-orange);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.9rem;
-    transition: transform 0.2s;
-  }
-  .social-btn:hover {
-    transform: translateY(-3px);
-    background-color: #ff6a22;
-  }
-
-  /* Navigation Verticale */
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1; /* Pousse le copyright vers le bas */
-  }
-
-  .nav-link {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-link i {
-    width: 25px; /* Largeur fixe pour alignement */
-    margin-right: 10px;
-    font-size: 1.1rem;
-  }
-
-  .nav-link:hover, .nav-link.active {
-    background-color: rgba(255, 85, 0, 0.1);
-    color: var(--accent-orange);
-  }
-
-  .sidebar-footer {
-    font-size: 0.75rem;
-    text-align: center;
-    color: #444;
-    border-top: 1px solid var(--border-color);
-    padding-top: 20px;
-  }
-
-  /* --- MAIN CONTENT (Droite) --- */
-  .main-content {
-    margin-left: var(--sidebar-width);
-    flex: 1;
-    padding: 60px 80px;
-    scroll-behavior: smooth;
-  }
-
-  section {
-    margin-bottom: 100px;
-    scroll-margin-top: 40px; /* Pour l'ancre */
-  }
-
-  /* Titres de sections */
-  .section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--accent-orange);
-  }
-  .section-title span { color: var(--text-main); }
-  .section-title::after {
-    content: "";
-    height: 2px;
-    width: 60px;
-    background-color: var(--accent-orange);
-  }
-
-  /* --- ACCUEIL --- */
-  .hero h1 {
-    font-size: 4rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
-  }
-  .hero p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    max-width: 600px;
-  }
-
-  /* --- PARCOURS (Timeline Style) --- */
-  .timeline-item {
-    background-color: var(--card-bg);
-    border-left: 3px solid var(--accent-orange);
-    padding: 30px;
-    margin-bottom: 25px;
-    border-radius: 0 8px 8px 0;
-    position: relative;
-    transition: transform 0.3s;
-  }
-  .timeline-item:hover {
-    transform: translateX(10px);
-    background-color: #141414;
-  }
-  .timeline-date {
-    background-color: #222;
-    color: var(--accent-orange);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: inline-block;
-    margin-bottom: 15px;
-  }
-  .timeline-item h3 { margin: 0 0 5px 0; font-size: 1.5rem; }
-  .timeline-item h4 { margin: 0 0 15px 0; color: var(--text-muted); font-weight: 400; font-size: 1rem; }
-  
-  /* Style spécifique "Focus" comme dans le screen (Fond orange) */
-  .timeline-item.highlight {
-    background-color: rgba(255, 85, 0, 0.1); /* Fond légèrement orange */
-    border: 1px solid var(--accent-orange);
-    border-left: 5px solid var(--accent-orange);
-  }
-
-  /* --- GRID (Pour Certifications / Veilles) --- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  .card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 25px;
-    border-radius: 8px;
-    text-align: center;
-    transition: 0.3s;
-  }
-  .card:hover {
-    border-color: var(--accent-orange);
-    transform: translateY(-5px);
-  }
-  .card-icon {
-    font-size: 2.5rem;
-    color: var(--accent-orange);
-    margin-bottom: 20px;
-  }
-
-  /* --- TABLEAU VEILLES --- */
-  .veille-card {
-    display: flex;
-    align-items: center;
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    margin-bottom: 15px;
-  }
-  .veille-icon {
-    font-size: 1.5rem;
-    color: var(--text-muted);
-    margin-right: 20px;
-  }
-  .veille-content h4 { margin: 0; font-size: 1.1rem; }
-  .veille-content p { margin: 5px 0 0; font-size: 0.9rem; color: var(--text-muted); }
-
-  /* --- RESPONSIVE MOBILE --- */
-  @media (max-width: 900px) {
-    body { flex-direction: column; }
+    /* --- SIDEBAR (Gauche) --- */
     .sidebar {
-      position: relative;
-      width: 100%;
-      height: auto;
-      border-right: none;
-      border-bottom: 1px solid var(--border-color);
+      width: var(--sidebar-width);
+      background-color: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 20px;
+      z-index: 1000;
     }
+
+    .profile-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #222;
+      margin: 0 auto 15px;
+      border: 3px solid var(--accent-orange);
+      background-image: url(''); 
+      background-size: cover;
+      background-position: center;
+    }
+
+    .profile-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .social-btn {
+      width: 35px;
+      height: 35px;
+      background-color: var(--accent-orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+    .social-btn:hover {
+      transform: translateY(-3px);
+      background-color: #ff6a22;
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link i {
+      width: 25px;
+      margin-right: 10px;
+      font-size: 1.1rem;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background-color: rgba(255, 85, 0, 0.1);
+      color: var(--accent-orange);
+    }
+
+    .sidebar-footer {
+      font-size: 0.75rem;
+      text-align: center;
+      color: #444;
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+    }
+
+    /* --- MAIN CONTENT (Droite) --- */
     .main-content {
-      margin-left: 0;
-      padding: 40px 20px;
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 60px 80px;
+      scroll-behavior: smooth;
     }
-    .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-    .hero h1 { font-size: 2.5rem; }
-  }
 
-  /* --- DROPDOWN TABLEAU DE SYNTHÈSE --- */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+    section {
+      margin-bottom: 100px;
+      scroll-margin-top: 40px;
+    }
 
-  .dropbtn {
-    background-color: var(--card-bg);
-    color: var(--text-main);
-    padding: 16px 24px;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-  }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--accent-orange);
+    }
+    .section-title span { color: var(--text-main); }
+    .section-title::after {
+      content: "";
+      height: 2px;
+      width: 60px;
+      background-color: var(--accent-orange);
+    }
 
-  /* Effet au survol du bouton principal */
-  .dropdown:hover .dropbtn, .dropbtn:hover {
-    border-color: var(--accent-orange);
-    background-color: #141414;
-    transform: translateY(-2px);
-  }
+    .hero h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
 
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--card-bg);
-    min-width: 100%;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    z-index: 10;
-    margin-top: 8px;
-    overflow: hidden;
-  }
+    /* --- PARCOURS & CARDS --- */
+    .timeline-item {
+      background-color: var(--card-bg);
+      border-left: 3px solid var(--accent-orange);
+      padding: 30px;
+      margin-bottom: 25px;
+      border-radius: 0 8px 8px 0;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .timeline-item:hover {
+      transform: translateX(10px);
+      background-color: #141414;
+    }
+    .timeline-date {
+      background-color: #222;
+      color: var(--accent-orange);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .timeline-item h3 { margin: 0 0 5px 0; font-size: 1.5rem; }
+    .timeline-item h4 { margin: 0 0 15px 0; color: var(--text-muted); font-weight: 400; font-size: 1rem; }
 
-  .dropdown-content a {
-    color: var(--text-muted);
-    padding: 14px 20px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 0.95rem;
-    font-weight: 500;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      border-radius: 8px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-5px);
+    }
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--accent-orange);
+      margin-bottom: 20px;
+    }
 
-  .dropdown-content a:hover {
-    background-color: rgba(255, 85, 0, 0.1);
-    color: var(--accent-orange);
-  }
+    /* --- STYLE DU MENU DÉROULANT PDF --- */
+    .pdf-dropdown-wrapper {
+      margin-top: 20px;
+      width: 100%;
+    }
 
-  /* Affichage du menu déroulant au survol */
-  .dropdown:hover .dropdown-content {
-    display: block;
-    animation: fadeIn 0.3s ease;
-  }
+    .pdf-trigger {
+      width: 100%;
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      font-size: 1.1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
 
-  /* Petite animation d'apparition douce */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+    .pdf-trigger:hover {
+      border-color: var(--accent-orange);
+      background-color: #141414;
+    }
+
+    .pdf-trigger.active {
+      border-radius: 8px 8px 0 0;
+      border-bottom-color: transparent;
+      color: var(--accent-orange);
+    }
+
+    .pdf-container-content {
+      display: none;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-top: none;
+      padding: 10px;
+      border-radius: 0 0 8px 8px;
+    }
+
+    #pdf-chevron {
+      transition: transform 0.3s ease;
+    }
+
+    .rotate-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .main-content {
+        margin-left: 0;
+        padding: 40px 20px;
+      }
+      .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .hero h1 { font-size: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -357,24 +307,13 @@
     </div>
 
     <nav class="nav-menu">
-      <a href="#accueil" class="nav-link active">
-        <i class="fas fa-home"></i> Accueil
-      </a>
-      <a href="#apropos" class="nav-link">
-        <i class="fas fa-user"></i> À Propos
-      </a>
-      <a href="#parcours" class="nav-link">
-        <i class="fas fa-file-alt"></i> Parcours
-      </a>
-      <a href="#certifications" class="nav-link">
-        <i class="fas fa-certificate"></i> Certifications
-      </a>
-      <a href="#veilles" class="nav-link">
-        <i class="fas fa-eye"></i> Veilles
-      </a>
-      <a href="#contact" class="nav-link">
-        <i class="fas fa-envelope"></i> Contact
-      </a>
+      <a href="#accueil" class="nav-link active"><i class="fas fa-home"></i> Accueil</a>
+      <a href="#apropos" class="nav-link"><i class="fas fa-user"></i> À Propos</a>
+      <a href="#parcours" class="nav-link"><i class="fas fa-file-alt"></i> Parcours</a>
+      <a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i> Certifications</a>
+      <a href="#tableauSynthese" class="nav-link"><i class="fas fa-table"></i> Synthèse E5</a>
+      <a href="#veilles" class="nav-link"><i class="fas fa-eye"></i> Veilles</a>
+      <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
 
     <div class="sidebar-footer">
@@ -386,22 +325,16 @@
     
     <section id="accueil" class="hero">
       <p style="color: var(--accent-orange); font-weight: 600;">Bienvenue sur mon portfolio</p>
-      <h1>Futur <span style="color: var(--accent-orange);"><br>Miagiste</h1></span>
+      <h1>Futur <span style="color: var(--accent-orange);"><br>Miagiste</span></h1>
       <p>Étudiant en BTS SIO option SLAM. Je construis des applications web modernes et performantes.</p>
       <a href="#contact" style="display:inline-block; margin-top:20px; padding:10px 25px; background:var(--accent-orange); color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Me contacter</a>
     </section>
 
     <section id="apropos">
-      <h2 class="section-title">À Propos </h2>
-      <p>
-        Bonjour, je me présente, <strong>Nawfel</strong>. Je suis actuellement étudiant en <strong>BTS SIO</strong> (Services Informatiques aux Organisations) avec l'option <strong>SLAM</strong> (Solutions Logicielles et Applications Métiers).
-      </p>
-      <p>
-        Passionné par le code et l'architecture logicielle, je me forme quotidiennement sur les différents outils informatique (PHP, JS, SQL, UNITY) et les outils DevOps. Mon objectif est de concevoir des outils utiles et ergonomiques.
-      </p>
-      <p>
-        Travail en freelance sur le jeu Révolution Idle (Unity)
-      </p>
+      <h2 class="section-title">À Propos</h2>
+      <p>Bonjour, je me présente, <strong>Nawfel</strong>. Je suis actuellement étudiant en <strong>BTS SIO</strong> (Services Informatiques aux Organisations) avec l'option <strong>SLAM</strong>.</p>
+      <p>Passionné par le code et l'architecture logicielle, je me forme quotidiennement sur les différents outils informatique (PHP, JS, SQL, UNITY) et les outils DevOps.</p>
+      <p>Travail en freelance sur le jeu Révolution Idle (Unity)</p>
       
       <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 1.2rem;">Mes outils favoris ⚙️</h3>
       <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;">
@@ -427,172 +360,138 @@
     </section>
 
     <section id="parcours">
-      <h2 class="section-title">Mon Parcours </h2>
-      
+      <h2 class="section-title">Mon Parcours</h2>
       <div class="timeline-item">
         <span class="timeline-date">2026-2028</span>
         <h3>Mon futur</h3>
         <h4>Formation Miage à Nantes</h4>
       </div>
-      
       <div class="timeline-item">
         <span class="timeline-date">Janvier - Février 2026</span>
         <h3>Stage de deuxième année</h3>
         <h4>Laboratoire de mathématique à la faculté de nantes</h4>
         <p>Développement en Python/HTML/PHP/Wordpress</p>
       </div>
-      
       <div class="timeline-item">
         <span class="timeline-date">Mai - Juil 2024</span>
         <h3>Stage de première année</h3>
         <h4>OnyGaming à Nantes</h4>
         <p>Développement d'un jeu vidéo sous UNITY.</p>
       </div>
-      
-      <div class="timeline-item">
-        <span class="timeline-date">2023 - 2025</span>
-        <h3>BTS SIO Option SLAM</h3>
-        <h4>Lycée Alcide d'orbigny</h4>
-        <p>Apprentissage du développement web, bases de données, cybersécurité de base et gestion de projet Agile.</p>
-      </div>
-
-      <div class="timeline-item">
-        <span class="timeline-date">2020 - 2023</span>
-        <h3>Baccalauréat Général</h3>
-        <h4>Lycée Alcide d'orbigny</h4>
-        <p>Spécialité HGGSP et SES.</p>
-      </div>
     </section>
 
     <section id="certifications">
-      <h2 class="section-title">Certifications </h2>
-      <p style="margin-bottom: 30px; color: var(--text-muted);">Mes validations de compétences officielles.</p>
-      
+      <h2 class="section-title">Certifications</h2>
       <div class="grid">
         <div class="card">
           <div class="card-icon"><i class="fab fa-unity"></i></div>
           <h3>Unity</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem;">2025</p>
-          <p>Apprendre à utiliser l'outil Unity.</p>
-          <a href="goToCertifUnity.html" style="color:var(--accent-orange); font-size:0.85rem; text-decoration:none;">Voir le certificat &rarr;</a>
+          <p>2025 - Maîtrise de l'outil Unity Engine.</p>
+          <a href="#" style="color:var(--accent-orange); text-decoration:none;">Voir le certificat &rarr;</a>
         </div>
-        
-      <div class="card">
+        <div class="card">
           <div class="card-icon"><i class="fas fa-terminal"></i></div>
-            <h3>TryHackMe</h3>
-            <p style="color:var(--text-muted); font-size:0.9rem;">2026</p>
-            <p>Certification sur la sécurité.</p>
-            <a href="goToCertifTryHackMe.html" style="color:var(--accent-orange); font-size:0.85rem; text-decoration:none;">Voir le certificat &rarr;</a>
-          </div>
-      </div>
-      
-    </section>
-<section id="tableauSynthese">
-      <h2 class="section-title">Mon tableau de synthèse</h2>
-      <p style="margin-bottom: 30px; color: var(--text-muted);">Consultez ou téléchargez mon tableau de synthèse de l'épreuve E5 (Annexe 8-1).</p>
-      
-      <div class="dropdown">
-        <button class="dropbtn">
-          <i class="fas fa-file-pdf" style="color: #ff5500; margin-right: 10px;"></i> 
-          Tableau de synthèse E5
-          <i class="fas fa-chevron-down" style="margin-left: 15px; font-size: 0.8em;"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="images/BTS SIO - 2025 - Annexe 8-1 - Epreuve E5 -Tableau de synthèse Nawfel Rharbaoui.pdf" target="_blank">
-            <i class="fas fa-eye" style="margin-right: 10px;"></i> Voir le PDF
-          </a>
-          <a href="images/BTS SIO - 2025 - Annexe 8-1 - Epreuve E5 -Tableau de synthèse Nawfel Rharbaoui.pdf" download>
-            <i class="fas fa-download" style="margin-right: 10px;"></i> Télécharger
-          </a>
+          <h3>TryHackMe</h3>
+          <p>2026 - Certification Cybersécurité.</p>
+          <a href="#" style="color:var(--accent-orange); text-decoration:none;">Voir le certificat &rarr;</a>
         </div>
       </div>
     </section>
-    <section id="veilles">
-  <h2 class="section-title">Veilles Technologiques</h2>
-  <p style="margin-bottom:30px;">Mes différentes alertes de veille technologique</p>
 
-  <div class="grid">
-    <div class="card">
-      <div class="card-icon"><i class="fab fa-unity"></i></div>
-      <h3>Unity</h3>
-      <p>Toutes les nouvelles fonctionnalités de Unity Engine</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-code"></i></div>
-      <h3>C#</h3>
-      <p>Nouveautés C#, optimisation du code</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon"><i class="fas fa-database"></i></div>
-      <h3>SQL</h3>
-      <p>Améliorer mes compétences en écriture de script et découvrir les différents moteurs</p>
-    </div>
-  </div> <div style="margin-top: 20px; text-align: left;">
-    <a href="https://www.google.fr/alerts" target="_blank" style="color:var(--accent-orange); font-size:0.85rem; text-decoration:none;">
-      Voir mes Google Alerts &rarr;
-    </a>
-  </div>
-    <div>
-    Quelques exemples d'articles: 
+    <section id="tableauSynthese">
+      <h2 class="section-title">Mon tableau de synthèse</h2>
+      <p style="margin-bottom: 20px; color: var(--text-muted);">Cliquez ci-dessous pour afficher le document officiel de l'épreuve E5.</p>
       
-    </div>
+      <div class="pdf-dropdown-wrapper">
+        <button class="pdf-trigger" onclick="togglePdfViewer()">
+          <span><i class="fas fa-file-pdf" style="margin-right: 10px;"></i> Tableau de synthèse - Annexe 8-1</span>
+          <i class="fas fa-chevron-down" id="pdf-chevron"></i>
+        </button>
 
-</section>
+        <div id="pdf-container" class="pdf-container-content">
+          <iframe 
+            src="images/BTS SIO - 2025 - Annexe 8-1 - Epreuve E5 -Tableau de synthèse Nawfel Rharbaoui.pdf" 
+            width="100%" 
+            height="600px" 
+            style="border: none; border-radius: 4px;">
+          </iframe>
+          <div style="margin-top: 10px; text-align: right;">
+            <a href="images/BTS SIO - 2025 - Annexe 8-1 - Epreuve E5 -Tableau de synthèse Nawfel Rharbaoui.pdf" download style="color: var(--accent-orange); text-decoration: none; font-size: 0.9rem;">
+              <i class="fas fa-download"></i> Télécharger pour lecture hors-ligne
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="veilles">
+      <h2 class="section-title">Veilles Technologiques</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon"><i class="fab fa-unity"></i></div>
+          <h3>Unity</h3>
+          <p>Nouveautés de Unity Engine</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-code"></i></div>
+          <h3>C#</h3>
+          <p>Optimisation et nouvelles syntaxes</p>
+        </div>
+      </div>
+    </section>
     
     <section id="contact">
-      <h2 class="section-title">Contact </h2>
+      <h2 class="section-title">Contact</h2>
       <div class="card" style="text-align: left; max-width: 500px;">
-        <p>N'hésitez pas à me contacter pour une opportunité d'alternance ou un projet.</p>
-        <ul style="list-style:none; padding:0; margin-top:20px;">
-          <li style="margin-bottom:15px;">
-            <i class="fas fa-envelope" style="color:var(--accent-orange); width:25px;"></i> 
-            <a href="mailto:nawfelrharbaoui.pro@gmail.com" style="color:white; text-decoration:none;">nawfelrharbaoui.pro@gmail.com</a>
-          </li>
-          <li style="margin-bottom:15px;">
-            <i class="fas fa-phone" style="color:var(--accent-orange); width:25px;"></i> 
-            <span style="color:white;">07 62 08 84 91</span>
-          </li>
-          <li>
-            <i class="fab fa-linkedin" style="color:var(--accent-orange); width:25px;"></i> 
-            <a href="#" style="color:white; text-decoration:none;">LinkedIn/in/nawfel</a>
-          </li>
+        <ul style="list-style:none; padding:0;">
+          <li style="margin-bottom:15px;"><i class="fas fa-envelope" style="color:var(--accent-orange); width:25px;"></i> <a href="mailto:nawfelrharbaoui.pro@gmail.com" style="color:white; text-decoration:none;">nawfelrharbaoui.pro@gmail.com</a></li>
+          <li style="margin-bottom:15px;"><i class="fas fa-phone" style="color:var(--accent-orange); width:25px;"></i> <span style="color:white;">07 62 08 84 91</span></li>
         </ul>
       </div>
-      
     </section>
 
   </main>
 
-<script>
-  // Script pour mettre en surbrillance le lien actif lors du scroll
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
+  <script>
+    // SCRIPT POUR LE MENU DÉROULANT PDF
+    function togglePdfViewer() {
+      const container = document.getElementById('pdf-container');
+      const trigger = document.querySelector('.pdf-trigger');
+      const chevron = document.getElementById('pdf-chevron');
 
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-        current = section.getAttribute("id");
+      if (container.style.display === "block") {
+        container.style.display = "none";
+        trigger.classList.remove('active');
+        chevron.classList.remove('rotate-chevron');
+      } else {
+        container.style.display = "block";
+        trigger.classList.add('active');
+        chevron.classList.add('rotate-chevron');
       }
-    });
+    }
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
-        link.classList.add("active");
-      }
+    // SCRIPT POUR SURBRILLANCE MENU AU SCROLL
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>
-
-
-
-
-
